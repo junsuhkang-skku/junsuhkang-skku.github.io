@@ -1,1 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Junush Kang | Portfolio</title>
 
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Inter", sans-serif;
+      background: #0b0f19;
+      color: #f5f5f5;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(circle at top left, rgba(120, 119, 198, 0.25), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(0, 212, 255, 0.18), transparent 35%);
+      z-index: -1;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      backdrop-filter: blur(12px);
+      background: rgba(10, 10, 20, 0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: #d5d5d5;
+      transition: 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffffff;
+    }
+
+    section {
+      min-height: 100vh;
+      padding: 7rem 2rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .container {
+      max-width: 1200px;
+      width: 100%;
+      margin: auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .hero-text h1 {
+      font-size: 4rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text h1 span {
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #b8b8b8;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+      color: white;
+      font-weight: 600;
+      transition: transform 0.3s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 24px;
+      backdrop-filter: blur(20px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .hero-card p {
+      color: #c7c7c7;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-box,
+    .contact-box {
+      background: rgba(255,255,255,0.04);
+      padding: 2rem;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .project-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 2rem;
+      border-radius: 24px;
+      transition: 0.3s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(124, 92, 255, 0.5);
+    }
+
+    .project-card h3 {
+      margin-bottom: 1rem;
+      color: #ffffff;
+    }
+
+    .project-card p {
+      color: #bdbdbd;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .skill {
+      padding: 0.8rem 1.4rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #eaeaea;
+      transition: 0.3s ease;
+    }
+
+    .skill:hover {
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      color: #8a8a8a;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-text h1 {
+        font-size: 3rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-container {
+        padding: 1rem;
+      }
+
+      .hero-text h1 {
+        font-size: 2.3rem;
+      }
+
+      section {
+        padding: 6rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <div class="logo">Junush Kang</div>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="container hero">
+
+      <div class="hero-text">
+        <h1>
+          Hi, I'm <span>Junush Kang</span>
+        </h1>
+
+        <p>
+          Film & Multimedia / Software student at SKKU passionate about
+          multimedia technology, software development, and AI-powered media tools.
+          Currently exploring how artificial intelligence can transform
+          creative workflows and digital storytelling.
+        </p>
+
+        <a href="#projects" class="btn">View Projects</a>
+      </div>
+
+      <div class="hero-card">
+        <h3>Current Focus</h3>
+
+        <p>
+          Building creative software experiences that combine multimedia,
+          design, and AI technologies. Interested in interactive media,
+          generative AI tools, and modern web applications.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+
+      <h2 class="section-title">About Me</h2>
+
+      <div class="about-box">
+        <p>
+          I'm a student at Sungkyunkwan University (SKKU) majoring in
+          Film & Multimedia and Software. My interests lie at the intersection
+          of technology and creativity, especially in multimedia systems,
+          AI-assisted media production, and modern software development.
+        </p>
+
+        <br />
+
+        <p>
+          Recently, I’ve been focusing on AI tools related to media creation,
+          interactive content, and user experience design. I enjoy building
+          projects that combine visual creativity with technical problem-solving.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="container">
+
+      <h2 class="section-title">Projects</h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card">
+          <h3>Art Gallery Dashboard</h3>
+
+          <p>
+            A multimedia-focused dashboard project designed to organize,
+            visualize, and manage digital artwork collections with a
+            clean and modern interface.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <h3>AI Media Experiment</h3>
+
+          <p>
+            Exploring generative AI tools for image, video, and multimedia
+            workflows to enhance storytelling and creative production.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <h3>Interactive Portfolio Website</h3>
+
+          <p>
+            A responsive personal portfolio built with modern HTML and CSS,
+            featuring animations, smooth scrolling, and a minimalist dark theme.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="container">
+
+      <h2 class="section-title">Skills</h2>
+
+      <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Python</div>
+        <div class="skill">C</div>
+        <div class="skill">PostgreSQL</div>
+        <div class="skill">UI/UX Design</div>
+        <div class="skill">Multimedia Editing</div>
+        <div class="skill">AI Tools</div>
+        <div class="skill">Creative Coding</div>
+        <div class="skill">Responsive Web Design</div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+
+      <h2 class="section-title">Contact</h2>
+
+      <div class="contact-box">
+        <p>
+          Interested in collaboration, multimedia projects,
+          or creative AI tools?
+        </p>
+
+        <br />
+
+        <p>
+          Email: junush@example.com
+        </p>
+
+        <br />
+
+        <a href="mailto:junush@example.com" class="btn">
+          Get In Touch
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © 2026 Junush Kang • Portfolio Website
+  </footer>
+
+</body>
+</html>
