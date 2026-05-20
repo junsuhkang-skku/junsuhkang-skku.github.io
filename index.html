@@ -3,9 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Junush Kang | Portfolio</title>
+  <title>Junsuh Kang | Portfolio</title>
 
   <style>
+    :root {
+      --black: #0a0a0a;
+      --black-soft: #141414;
+      --black-card: #1b1b1b;
+      --white: #f6f6f2;
+      --white-muted: #c9c9c3;
+      --navy: #14213d;
+      --navy-light: #1f3563;
+      --line: rgba(246, 246, 242, 0.16);
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -14,21 +26,11 @@
     }
 
     body {
-      font-family: "Inter", sans-serif;
-      background: #0b0f19;
-      color: #f5f5f5;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--black);
+      color: var(--white);
       overflow-x: hidden;
-      line-height: 1.6;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(120, 119, 198, 0.25), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(0, 212, 255, 0.18), transparent 35%);
-      z-index: -1;
+      line-height: 1.65;
     }
 
     a {
@@ -40,9 +42,8 @@
       position: fixed;
       width: 100%;
       top: 0;
-      backdrop-filter: blur(12px);
-      background: rgba(10, 10, 20, 0.55);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(10, 10, 10, 0.94);
+      border-bottom: 1px solid var(--line);
       z-index: 1000;
     }
 
@@ -56,25 +57,33 @@
     }
 
     .logo {
-      font-size: 1.3rem;
-      font-weight: 700;
-      background: linear-gradient(90deg, #7c5cff, #00d4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+
+    .logo span {
+      color: var(--white-muted);
+      font-weight: 500;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: #d5d5d5;
-      transition: 0.3s ease;
+      color: var(--white-muted);
+      font-size: 0.95rem;
+      transition: color 0.2s ease, border-color 0.2s ease;
+      border-bottom: 1px solid transparent;
     }
 
     .nav-links a:hover {
-      color: #ffffff;
+      color: var(--white);
+      border-bottom-color: var(--navy-light);
     }
 
     section {
@@ -92,130 +101,251 @@
 
     .hero {
       display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 4rem;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 3rem;
       align-items: center;
     }
 
-    .hero-text h1 {
-      font-size: 4rem;
-      line-height: 1.1;
+    .eyebrow {
+      display: inline-block;
       margin-bottom: 1rem;
+      padding: 0.35rem 0.75rem;
+      border: 1px solid var(--navy-light);
+      background: var(--navy);
+      color: var(--white);
+      font-size: 0.8rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 999px;
+    }
+
+    .hero-text h1 {
+      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      line-height: 1.05;
+      margin-bottom: 1.2rem;
+      letter-spacing: -0.06em;
     }
 
     .hero-text h1 span {
-      background: linear-gradient(90deg, #7c5cff, #00d4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--white-muted);
     }
 
     .hero-text p {
-      color: #b8b8b8;
-      font-size: 1.1rem;
+      color: var(--white-muted);
+      font-size: 1.08rem;
       margin-bottom: 2rem;
-      max-width: 600px;
+      max-width: 650px;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
     }
 
     .btn {
       display: inline-block;
-      padding: 0.9rem 1.8rem;
+      padding: 0.9rem 1.5rem;
       border-radius: 999px;
-      background: linear-gradient(90deg, #7c5cff, #00d4ff);
-      color: white;
-      font-weight: 600;
-      transition: transform 0.3s ease;
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      border: 1px solid var(--navy-light);
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border-color: var(--line);
+      color: var(--white-muted);
     }
 
     .btn:hover {
-      transform: translateY(-3px);
+      transform: translateY(-2px);
+      background: var(--navy-light);
+      color: var(--white);
+    }
+
+    .hero-card,
+    .content-box,
+    details,
+    .project-card {
+      background: var(--black-card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 20px 45px var(--shadow);
     }
 
     .hero-card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.08);
       padding: 2rem;
-      border-radius: 24px;
-      backdrop-filter: blur(20px);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+      border-top: 6px solid var(--navy);
     }
 
     .hero-card h3 {
       margin-bottom: 1rem;
-      color: #ffffff;
+      color: var(--white);
+      font-size: 1.5rem;
     }
 
-    .hero-card p {
-      color: #c7c7c7;
+    .hero-card p,
+    .project-card p,
+    .content-box p,
+    details p,
+    details li {
+      color: var(--white-muted);
     }
 
     .section-title {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      background: linear-gradient(90deg, #7c5cff, #00d4ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.04em;
     }
 
-    .about-box,
-    .contact-box {
-      background: rgba(255,255,255,0.04);
+    .section-lead {
+      color: var(--white-muted);
+      max-width: 760px;
+      margin-bottom: 2.2rem;
+    }
+
+    .content-box {
       padding: 2rem;
-      border-radius: 24px;
-      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .details-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    details {
+      overflow: hidden;
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    details:hover {
+      transform: translateY(-3px);
+      border-color: var(--navy-light);
+    }
+
+    details[open] {
+      border-color: var(--navy-light);
+    }
+
+    summary {
+      cursor: pointer;
+      padding: 1.2rem 1.35rem;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      background: var(--black-soft);
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "+";
+      min-width: 2rem;
+      height: 2rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: var(--navy);
+      border: 1px solid var(--navy-light);
+      color: var(--white);
+      font-size: 1.2rem;
+    }
+
+    details[open] summary::after {
+      content: "–";
+    }
+
+    .detail-body {
+      padding: 1.25rem 1.35rem 1.4rem;
+    }
+
+    .detail-body ul {
+      padding-left: 1.1rem;
+    }
+
+    .detail-body li + li {
+      margin-top: 0.45rem;
+    }
+
+    .tag-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .tag {
+      padding: 0.7rem 1rem;
+      border-radius: 999px;
+      background: var(--black-soft);
+      border: 1px solid var(--line);
+      color: var(--white-muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .tag:hover {
+      color: var(--white);
+      border-color: var(--navy-light);
+      background: var(--navy);
     }
 
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 2rem;
+      gap: 1.2rem;
     }
 
     .project-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      padding: 2rem;
-      border-radius: 24px;
-      transition: 0.3s ease;
+      padding: 1.6rem;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
 
     .project-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(124, 92, 255, 0.5);
+      transform: translateY(-4px);
+      border-color: var(--navy-light);
     }
 
     .project-card h3 {
-      margin-bottom: 1rem;
-      color: #ffffff;
+      margin-bottom: 0.8rem;
+      color: var(--white);
     }
 
-    .project-card p {
-      color: #bdbdbd;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
+    .meta-list {
+      display: grid;
       gap: 1rem;
     }
 
-    .skill {
-      padding: 0.8rem 1.4rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      color: #eaeaea;
-      transition: 0.3s ease;
+    .meta-item {
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--navy);
+      border-radius: 16px;
+      background: var(--black-soft);
     }
 
-    .skill:hover {
-      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+    .meta-item strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 0.3rem;
     }
 
     footer {
       text-align: center;
       padding: 2rem;
-      color: #8a8a8a;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--white-muted);
+      border-top: 1px solid var(--line);
+      background: var(--black);
     }
 
     @media (max-width: 900px) {
@@ -223,12 +353,10 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-text h1 {
-        font-size: 3rem;
-      }
-
-      .nav-links {
-        gap: 1rem;
+      .nav-container {
+        align-items: flex-start;
+        gap: 0.8rem;
+        flex-direction: column;
       }
     }
 
@@ -237,185 +365,269 @@
         padding: 1rem;
       }
 
-      .hero-text h1 {
-        font-size: 2.3rem;
+      .nav-links {
+        gap: 0.9rem;
       }
 
       section {
-        padding: 6rem 1.2rem;
+        padding: 6.5rem 1.1rem;
+      }
+
+      .btn-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-
   <nav>
     <div class="nav-container">
-      <div class="logo">Junush Kang</div>
-
+      <div class="logo">Junsuh Kang <span>/ Portfolio</span></div>
       <div class="nav-links">
         <a href="#about">About</a>
-        <a href="#projects">Projects</a>
+        <a href="#history">History</a>
+        <a href="#courses">Courses</a>
         <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
   </nav>
 
-  <!-- HERO -->
   <section id="home">
     <div class="container hero">
-
       <div class="hero-text">
-        <h1>
-          Hi, I'm <span>Junush Kang</span>
-        </h1>
-
+        <span class="eyebrow">Film, Multimedia, and Software</span>
+        <h1>Creative technology portfolio by <span>Junsuh Kang</span></h1>
         <p>
-          Film & Multimedia / Software student at SKKU passionate about
-          multimedia technology, software development, and AI-powered media tools.
-          Currently exploring how artificial intelligence can transform
-          creative workflows and digital storytelling.
+          I study Film & Multimedia and Software at Sungkyunkwan University. My work connects visual storytelling,
+          interactive design, and software development to build clear, functional, and media-centered digital experiences.
         </p>
-
-        <a href="#projects" class="btn">View Projects</a>
+        <div class="btn-row">
+          <a href="#history" class="btn">View Background</a>
+          <a href="#skills" class="btn secondary">Explore Skills</a>
+        </div>
       </div>
 
       <div class="hero-card">
-        <h3>Current Focus</h3>
-
+        <h3>Portfolio Direction</h3>
         <p>
-          Building creative software experiences that combine multimedia,
-          design, and AI technologies. Interested in interactive media,
-          generative AI tools, and modern web applications.
+          This website is structured as an interactive resume. Click each section card to review education, awards,
+          completed coursework, programming languages, and production tools in detail.
         </p>
       </div>
-
     </div>
   </section>
 
-  <!-- ABOUT -->
   <section id="about">
     <div class="container">
-
       <h2 class="section-title">About Me</h2>
-
-      <div class="about-box">
+      <p class="section-lead">
+        A media and software student interested in combining design, video, animation, web development, databases,
+        and interactive systems.
+      </p>
+      <div class="content-box">
         <p>
-          I'm a student at Sungkyunkwan University (SKKU) majoring in
-          Film & Multimedia and Software. My interests lie at the intersection
-          of technology and creativity, especially in multimedia systems,
-          AI-assisted media production, and modern software development.
-        </p>
-
-        <br />
-
-        <p>
-          Recently, I’ve been focusing on AI tools related to media creation,
-          interactive content, and user experience design. I enjoy building
-          projects that combine visual creativity with technical problem-solving.
+          My academic background brings together two fields: visual media production and computer science. Through film,
+          animation, editing, interface design, and software courses, I am building a portfolio focused on creative systems,
+          interactive storytelling, and technically reliable digital products.
         </p>
       </div>
-
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
+  <section id="history">
     <div class="container">
+      <h2 class="section-title">History</h2>
+      <p class="section-lead">Click each item to see more information about my background.</p>
 
-      <h2 class="section-title">Projects</h2>
+      <div class="details-grid">
+        <details>
+          <summary>2017 Ajou University Raspberry Pi Competition Award</summary>
+          <div class="detail-body">
+            <p>
+              Received an award in a Raspberry Pi competition hosted by Ajou University in 2017, gaining early experience
+              with hardware-based computing, prototyping, and practical problem solving.
+            </p>
+          </div>
+        </details>
 
-      <div class="projects-grid">
+        <details>
+          <summary>Sungkyunkwan University: Film & Multimedia</summary>
+          <div class="detail-body">
+            <p>
+              Studying visual media, animation, digital design, video editing, storytelling, media history, and data-driven
+              approaches to art and content production.
+            </p>
+          </div>
+        </details>
 
-        <div class="project-card">
-          <h3>Art Gallery Dashboard</h3>
-
-          <p>
-            A multimedia-focused dashboard project designed to organize,
-            visualize, and manage digital artwork collections with a
-            clean and modern interface.
-          </p>
-        </div>
-
-        <div class="project-card">
-          <h3>AI Media Experiment</h3>
-
-          <p>
-            Exploring generative AI tools for image, video, and multimedia
-            workflows to enhance storytelling and creative production.
-          </p>
-        </div>
-
-        <div class="project-card">
-          <h3>Interactive Portfolio Website</h3>
-
-          <p>
-            A responsive personal portfolio built with modern HTML and CSS,
-            featuring animations, smooth scrolling, and a minimalist dark theme.
-          </p>
-        </div>
-
+        <details>
+          <summary>Sungkyunkwan University: Software</summary>
+          <div class="detail-body">
+            <p>
+              Studying core software topics including systems programming, data structures, computer architecture,
+              databases, operating systems, programming languages, and web programming.
+            </p>
+          </div>
+        </details>
       </div>
-
     </div>
   </section>
 
-  <!-- SKILLS -->
+  <section id="courses">
+    <div class="container">
+      <h2 class="section-title">Completed Coursework</h2>
+      <p class="section-lead">The course list is separated into media-focused and software-focused study areas.</p>
+
+      <div class="details-grid">
+        <details>
+          <summary>Film & Multimedia Courses</summary>
+          <div class="detail-body">
+            <ul>
+              <li>Introduction to Cinematography</li>
+              <li>Introduction to Animation</li>
+              <li>Character Animation</li>
+              <li>Digital Design</li>
+              <li>Interface and Interaction Design</li>
+              <li>Digital Video and Moving Image</li>
+              <li>Introduction to Video Editing</li>
+              <li>Video Editing Workshop</li>
+              <li>AI-Based Basic Game Workshop</li>
+              <li>Video Music Practice</li>
+              <li>Short-Form and MCN Content</li>
+              <li>Transmedia Storytelling</li>
+              <li>Film History</li>
+              <li>Art and Big Data</li>
+            </ul>
+          </div>
+        </details>
+
+        <details>
+          <summary>Software Courses</summary>
+          <div class="detail-body">
+            <ul>
+              <li>Systems Programming</li>
+              <li>Introduction to Data Structures</li>
+              <li>Introduction to Computer Architecture</li>
+              <li>Logic Circuits</li>
+              <li>Introduction to Databases</li>
+              <li>Operating Systems</li>
+              <li>Programming Languages</li>
+              <li>Web Programming Practice</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
   <section id="skills">
     <div class="container">
-
       <h2 class="section-title">Skills</h2>
+      <p class="section-lead">Click each card to confirm languages, programming skills, and production tools.</p>
 
-      <div class="skills">
-        <div class="skill">HTML</div>
-        <div class="skill">CSS</div>
-        <div class="skill">JavaScript</div>
-        <div class="skill">Python</div>
-        <div class="skill">C</div>
-        <div class="skill">PostgreSQL</div>
-        <div class="skill">UI/UX Design</div>
-        <div class="skill">Multimedia Editing</div>
-        <div class="skill">AI Tools</div>
-        <div class="skill">Creative Coding</div>
-        <div class="skill">Responsive Web Design</div>
+      <div class="details-grid">
+        <details>
+          <summary>Human Languages</summary>
+          <div class="detail-body">
+            <div class="tag-grid">
+              <span class="tag">Korean</span>
+              <span class="tag">English</span>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Programming & Markup Languages</summary>
+          <div class="detail-body">
+            <div class="tag-grid">
+              <span class="tag">C</span>
+              <span class="tag">JavaScript</span>
+              <span class="tag">CSS</span>
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">Python</span>
+              <span class="tag">OCaml</span>
+            </div>
+          </div>
+        </details>
+
+        <details>
+          <summary>Tools & Platforms</summary>
+          <div class="detail-body">
+            <div class="tag-grid">
+              <span class="tag">Adobe Photoshop</span>
+              <span class="tag">Adobe Illustrator</span>
+              <span class="tag">Adobe Premiere Pro</span>
+              <span class="tag">Adobe After Effects</span>
+              <span class="tag">Unity</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Linux Ubuntu</span>
+            </div>
+          </div>
+        </details>
       </div>
-
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <section id="projects">
+    <div class="container">
+      <h2 class="section-title">Project Areas</h2>
+      <p class="section-lead">Project cards can be expanded later with screenshots, links, GitHub repositories, or production notes.</p>
+
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>Interactive Portfolio Website</h3>
+          <p>
+            A responsive HTML and CSS portfolio with clickable information cards, a strict black-white-navy color palette,
+            and a resume-oriented structure.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <h3>Media Production & Editing</h3>
+          <p>
+            Coursework and practice related to cinematography, video editing, motion graphics, sound, animation,
+            and short-form content production.
+          </p>
+        </div>
+
+        <div class="project-card">
+          <h3>Software & Database Practice</h3>
+          <p>
+            Technical study focused on programming, data structures, operating systems, database concepts,
+            web programming, and system-level thinking.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section id="contact">
     <div class="container">
-
       <h2 class="section-title">Contact</h2>
+      <p class="section-lead">Open to collaboration in media production, interactive design, web development, and creative software projects.</p>
 
-      <div class="contact-box">
-        <p>
-          Interested in collaboration, multimedia projects,
-          or creative AI tools?
-        </p>
-
-        <br />
-
-        <p>
-          Email: junush@example.com
-        </p>
-
-        <br />
-
-        <a href="mailto:junsuh1025@gmail.com" class="btn">
-          Get In Touch
-        </a>
+      <div class="content-box meta-list">
+        <div class="meta-item">
+          <strong>Email</strong>
+          <a href="mailto:junsuh1025@gmail.com">junsuh1025@gmail.com</a>
+        </div>
+        <div class="meta-item">
+          <strong>Focus</strong>
+          <span>Film & Multimedia, Software, Interactive Media, Web Development</span>
+        </div>
       </div>
-
     </div>
   </section>
 
   <footer>
-    © 2026 Junush Kang • Portfolio Website
+    © 2026 Junsuh Kang • Portfolio Website
   </footer>
-
 </body>
 </html>
