@@ -3,18 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Junsuh Kang | Portfolio</title>
+  <title>Junsuh Kang | Creative Technology Portfolio</title>
 
   <style>
     :root {
       --black: #0a0a0a;
       --black-soft: #141414;
       --black-card: #1b1b1b;
+      --black-deep: #050505;
       --white: #f6f6f2;
       --white-muted: #c9c9c3;
+      --white-soft: #e4e4dc;
       --navy: #14213d;
       --navy-light: #1f3563;
       --line: rgba(246, 246, 242, 0.16);
+      --line-strong: rgba(246, 246, 242, 0.28);
       --shadow: rgba(0, 0, 0, 0.35);
     }
 
@@ -30,7 +33,7 @@
       background: var(--black);
       color: var(--white);
       overflow-x: hidden;
-      line-height: 1.65;
+      line-height: 1.68;
     }
 
     a {
@@ -42,13 +45,13 @@
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(10, 10, 10, 0.94);
+      background: rgba(10, 10, 10, 0.96);
       border-bottom: 1px solid var(--line);
       z-index: 1000;
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1240px;
       margin: auto;
       display: flex;
       justify-content: space-between;
@@ -57,10 +60,11 @@
     }
 
     .logo {
-      font-size: 1.2rem;
-      font-weight: 800;
+      font-size: 1.1rem;
+      font-weight: 900;
       letter-spacing: 0.04em;
       color: var(--white);
+      text-transform: uppercase;
     }
 
     .logo span {
@@ -70,13 +74,13 @@
 
     .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 1.15rem;
       flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--white-muted);
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       transition: color 0.2s ease, border-color 0.2s ease;
       border-bottom: 1px solid transparent;
     }
@@ -91,36 +95,56 @@
       padding: 7rem 2rem;
       display: flex;
       align-items: center;
+      border-bottom: 1px solid rgba(246, 246, 242, 0.06);
     }
 
     .container {
-      max-width: 1200px;
+      max-width: 1240px;
       width: 100%;
       margin: auto;
     }
 
     .hero {
       display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3rem;
-      align-items: center;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 2rem;
+      align-items: stretch;
     }
 
     .eyebrow {
       display: inline-block;
       margin-bottom: 1rem;
-      padding: 0.35rem 0.75rem;
+      padding: 0.38rem 0.8rem;
       border: 1px solid var(--navy-light);
       background: var(--navy);
       color: var(--white);
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      letter-spacing: 0.09em;
       text-transform: uppercase;
       border-radius: 999px;
     }
 
+    .hero-text,
+    .hero-card,
+    .content-box,
+    details,
+    .project-card,
+    .mini-card,
+    .stat-card,
+    .timeline-item {
+      background: var(--black-card);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: 0 18px 40px var(--shadow);
+    }
+
+    .hero-text {
+      padding: 2.4rem;
+      border-left: 8px solid var(--navy);
+    }
+
     .hero-text h1 {
-      font-size: clamp(2.5rem, 7vw, 5.2rem);
+      font-size: clamp(2.5rem, 6.2vw, 5.1rem);
       line-height: 1.05;
       margin-bottom: 1.2rem;
       letter-spacing: -0.06em;
@@ -132,15 +156,16 @@
 
     .hero-text p {
       color: var(--white-muted);
-      font-size: 1.08rem;
-      margin-bottom: 2rem;
-      max-width: 650px;
+      font-size: 1.06rem;
+      margin-bottom: 1.1rem;
+      max-width: 760px;
     }
 
     .btn-row {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
+      margin-top: 1.8rem;
     }
 
     .btn {
@@ -149,14 +174,14 @@
       border-radius: 999px;
       background: var(--navy);
       color: var(--white);
-      font-weight: 700;
+      font-weight: 800;
       border: 1px solid var(--navy-light);
       transition: transform 0.2s ease, background 0.2s ease;
     }
 
     .btn.secondary {
       background: transparent;
-      border-color: var(--line);
+      border-color: var(--line-strong);
       color: var(--white-muted);
     }
 
@@ -166,55 +191,97 @@
       color: var(--white);
     }
 
-    .hero-card,
-    .content-box,
-    details,
-    .project-card {
-      background: var(--black-card);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      box-shadow: 0 20px 45px var(--shadow);
+    .hero-side {
+      display: grid;
+      gap: 1rem;
     }
 
     .hero-card {
-      padding: 2rem;
+      padding: 1.7rem;
       border-top: 6px solid var(--navy);
     }
 
-    .hero-card h3 {
-      margin-bottom: 1rem;
+    .hero-card h3,
+    .mini-card h3,
+    .project-card h3,
+    .stat-card strong {
+      margin-bottom: 0.75rem;
       color: var(--white);
-      font-size: 1.5rem;
     }
 
     .hero-card p,
     .project-card p,
     .content-box p,
     details p,
-    details li {
+    details li,
+    .mini-card p,
+    .timeline-item p,
+    .stat-card span {
       color: var(--white-muted);
     }
 
     .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.1rem, 4vw, 3.3rem);
       margin-bottom: 0.75rem;
       letter-spacing: -0.04em;
     }
 
     .section-lead {
       color: var(--white-muted);
-      max-width: 760px;
+      max-width: 860px;
       margin-bottom: 2.2rem;
+      font-size: 1.05rem;
     }
 
     .content-box {
       padding: 2rem;
     }
 
+    .two-column {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .mini-grid,
+    .stats-grid,
+    .projects-grid,
     .details-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.2rem;
+    }
+
+    .mini-grid {
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      margin-top: 1.2rem;
+    }
+
+    .stats-grid {
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      margin-top: 1.2rem;
+    }
+
+    .details-grid {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .projects-grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .mini-card,
+    .stat-card {
+      padding: 1.25rem;
+      background: var(--black-soft);
+      border-color: var(--line);
+      box-shadow: none;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.8rem;
+      line-height: 1;
     }
 
     details {
@@ -239,7 +306,7 @@
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      font-weight: 800;
+      font-weight: 900;
       color: var(--white);
       background: var(--black-soft);
     }
@@ -259,7 +326,7 @@
       background: var(--navy);
       border: 1px solid var(--navy-light);
       color: var(--white);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
     }
 
     details[open] summary::after {
@@ -267,31 +334,33 @@
     }
 
     .detail-body {
-      padding: 1.25rem 1.35rem 1.4rem;
+      padding: 1.35rem;
     }
 
     .detail-body ul {
       padding-left: 1.1rem;
+      margin-top: 0.8rem;
     }
 
     .detail-body li + li {
-      margin-top: 0.45rem;
+      margin-top: 0.5rem;
     }
 
     .tag-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 0.7rem;
+      margin-top: 0.9rem;
     }
 
     .tag {
-      padding: 0.7rem 1rem;
+      padding: 0.72rem 1rem;
       border-radius: 999px;
       background: var(--black-soft);
       border: 1px solid var(--line);
       color: var(--white-muted);
-      font-weight: 600;
-      font-size: 0.95rem;
+      font-weight: 700;
+      font-size: 0.92rem;
     }
 
     .tag:hover {
@@ -300,15 +369,10 @@
       background: var(--navy);
     }
 
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.2rem;
-    }
-
     .project-card {
-      padding: 1.6rem;
+      padding: 1.55rem;
       transition: transform 0.2s ease, border-color 0.2s ease;
+      border-top: 5px solid var(--navy);
     }
 
     .project-card:hover {
@@ -317,8 +381,38 @@
     }
 
     .project-card h3 {
+      font-size: 1.25rem;
+    }
+
+    .project-card .label {
+      display: inline-block;
       margin-bottom: 0.8rem;
       color: var(--white);
+      border: 1px solid var(--navy-light);
+      background: var(--navy);
+      padding: 0.25rem 0.65rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .timeline-item {
+      padding: 1.2rem;
+      border-left: 6px solid var(--navy);
+    }
+
+    .timeline-item strong {
+      display: block;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      font-size: 1.05rem;
     }
 
     .meta-list {
@@ -345,11 +439,12 @@
       padding: 2rem;
       color: var(--white-muted);
       border-top: 1px solid var(--line);
-      background: var(--black);
+      background: var(--black-deep);
     }
 
-    @media (max-width: 900px) {
-      .hero {
+    @media (max-width: 960px) {
+      .hero,
+      .two-column {
         grid-template-columns: 1fr;
       }
 
@@ -366,11 +461,16 @@
       }
 
       .nav-links {
-        gap: 0.9rem;
+        gap: 0.85rem;
       }
 
       section {
         padding: 6.5rem 1.1rem;
+      }
+
+      .hero-text,
+      .content-box {
+        padding: 1.45rem;
       }
 
       .btn-row {
@@ -402,24 +502,45 @@
   <section id="home">
     <div class="container hero">
       <div class="hero-text">
-        <span class="eyebrow">Film, Multimedia, and Software</span>
+        <span class="eyebrow">Film, Multimedia, Software</span>
         <h1>Creative technology portfolio by <span>Junsuh Kang</span></h1>
         <p>
-          I study Film & Multimedia and Software at Sungkyunkwan University. My work connects visual storytelling,
-          interactive design, and software development to build clear, functional, and media-centered digital experiences.
+          I am developing a portfolio that presents both creative media practice and software-based problem solving.
+          My background combines film language, moving-image production, interaction design, programming, databases,
+          and system-level thinking.
+        </p>
+        <p>
+          This site is designed as a detailed interactive profile. Each section is intentionally content-heavy, so visitors
+          can understand not only what I have studied, but also how my media and software interests connect into future projects.
         </p>
         <div class="btn-row">
-          <a href="#history" class="btn">View Background</a>
-          <a href="#skills" class="btn secondary">Explore Skills</a>
+          <a href="#about" class="btn">Read Introduction</a>
+          <a href="#courses" class="btn secondary">View Coursework</a>
+          <a href="#skills" class="btn secondary">Check Skills</a>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Portfolio Direction</h3>
-        <p>
-          This website is structured as an interactive resume. Click each section card to review education, awards,
-          completed coursework, programming languages, and production tools in detail.
-        </p>
+      <div class="hero-side">
+        <div class="hero-card">
+          <h3>Portfolio Direction</h3>
+          <p>
+            The website works like an expanded resume: education, awards, coursework, technical abilities, production tools,
+            and project directions are organized into clickable cards for quick review.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h3>Core Identity</h3>
+          <p>
+            A hybrid creator who studies how images, stories, interfaces, and software systems can work together in digital media.
+          </p>
+        </div>
+        <div class="hero-card">
+          <h3>Current Focus</h3>
+          <p>
+            Interactive web portfolios, AI-assisted creative workflows, video editing pipelines, media archive interfaces,
+            and game-like experiences built with clear design and practical implementation.
+          </p>
+        </div>
       </div>
     </div>
   </section>
@@ -428,51 +549,143 @@
     <div class="container">
       <h2 class="section-title">About Me</h2>
       <p class="section-lead">
-        A media and software student interested in combining design, video, animation, web development, databases,
-        and interactive systems.
+        A longer introduction to my academic background, creative interests, technical direction, and portfolio goals.
       </p>
-      <div class="content-box">
-        <p>
-          My academic background brings together two fields: visual media production and computer science. Through film,
-          animation, editing, interface design, and software courses, I am building a portfolio focused on creative systems,
-          interactive storytelling, and technically reliable digital products.
-        </p>
+
+      <div class="two-column">
+        <div class="content-box">
+          <p>
+            I am a student at Sungkyunkwan University studying Film & Multimedia and Software. My academic path is built around
+            the connection between creative production and technical execution. I am interested in the moment when visual ideas
+            become working systems: a storyboard becomes an edited video, a design sketch becomes an interface, a course project
+            becomes a web page, and a media concept becomes an interactive experience that people can actually use.
+          </p>
+          <br />
+          <p>
+            In Film & Multimedia, I have studied the foundations of cinematography, animation, editing, digital design, interface
+            design, moving image, sound, short-form content, transmedia storytelling, film history, and art-related data analysis.
+            These areas trained me to think about rhythm, framing, visual hierarchy, audience attention, narrative structure, and
+            the emotional effect of media. I do not see media only as decoration; I see it as a structured communication system.
+          </p>
+          <br />
+          <p>
+            In Software, I have studied core topics such as systems programming, data structures, computer architecture, logic
+            circuits, databases, operating systems, programming languages, and web programming. These subjects help me understand
+            how digital products are built beneath the surface. They also help me approach creative work with a stronger sense of
+            organization, maintainability, data flow, and computational logic.
+          </p>
+        </div>
+
+        <div class="content-box">
+          <p>
+            My strongest interest is in hybrid projects where media production and software development support each other. For
+            example, I am interested in portfolio websites that feel like curated exhibitions, interactive interfaces for digital
+            artwork, AI-assisted tools for editing and content generation, media databases that make visual assets easier to manage,
+            and Unity-based experiences that combine game logic with visual storytelling.
+          </p>
+          <br />
+          <p>
+            I enjoy working across multiple stages of production. I can plan the concept, organize references, build a visual system,
+            edit images or videos, design the user experience, and then implement the structure with HTML, CSS, JavaScript, Python,
+            databases, or other tools. This broad process is important to me because a strong digital project usually needs both
+            creative sensitivity and technical responsibility.
+          </p>
+          <br />
+          <p>
+            Through this portfolio, I want to present myself as a creator who can communicate with designers, developers, editors,
+            and planners. My goal is to keep building work that is visually clear, technically practical, and meaningful for users.
+            Rather than separating art and engineering, I want to use both as parts of one production process.
+          </p>
+        </div>
+      </div>
+
+      <div class="mini-grid">
+        <div class="mini-card">
+          <h3>Creative Perspective</h3>
+          <p>Understanding images, editing, motion, storytelling, and interface composition as tools for communication.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Technical Perspective</h3>
+          <p>Building structured, maintainable, and functional systems through programming, databases, and web development.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Design Perspective</h3>
+          <p>Organizing information clearly so that users can understand content quickly and move through a site naturally.</p>
+        </div>
+        <div class="mini-card">
+          <h3>Future Direction</h3>
+          <p>Developing media-centered software projects, AI creative tools, interactive portfolios, and digital archive systems.</p>
+        </div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card"><strong>2</strong><span>Academic fields: Film & Multimedia and Software</span></div>
+        <div class="stat-card"><strong>22</strong><span>Listed university courses across media and software</span></div>
+        <div class="stat-card"><strong>8+</strong><span>Programming, database, and language skills</span></div>
+        <div class="stat-card"><strong>7+</strong><span>Creative software tools and platforms</span></div>
       </div>
     </div>
   </section>
 
   <section id="history">
     <div class="container">
-      <h2 class="section-title">History</h2>
-      <p class="section-lead">Click each item to see more information about my background.</p>
+      <h2 class="section-title">History & Education</h2>
+      <p class="section-lead">
+        Click each item to review the background behind my award experience and university study.
+      </p>
 
-      <div class="details-grid">
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>2017 · Ajou University Raspberry Pi Competition Award</strong>
+          <p>
+            Received an award in a Raspberry Pi competition hosted by Ajou University. This experience introduced me to practical
+            computing, physical prototyping, hardware-based logic, and the importance of solving problems with limited resources.
+            It also became an early reason for my interest in technology that can be touched, tested, and demonstrated.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <strong>Sungkyunkwan University · Film & Multimedia</strong>
+          <p>
+            Studying media production, visual storytelling, animation, digital design, moving image, editing, interaction, and
+            media theory. This field helps me understand how creative ideas are planned, produced, edited, and presented to an audience.
+          </p>
+        </div>
+        <div class="timeline-item">
+          <strong>Sungkyunkwan University · Software</strong>
+          <p>
+            Studying the technical foundations behind digital systems, including programming, computer architecture, operating
+            systems, database concepts, programming languages, and web implementation. This field supports the development side of my work.
+          </p>
+        </div>
+      </div>
+
+      <div class="details-grid" style="margin-top: 1.2rem;">
         <details>
-          <summary>2017 Ajou University Raspberry Pi Competition Award</summary>
+          <summary>Why Film & Multimedia Matters</summary>
           <div class="detail-body">
             <p>
-              Received an award in a Raspberry Pi competition hosted by Ajou University in 2017, gaining early experience
-              with hardware-based computing, prototyping, and practical problem solving.
+              Film and multimedia study helps me analyze how visual information is built. It teaches me to consider camera movement,
+              editing rhythm, sound, composition, narrative flow, and audience experience. These skills are useful not only for video
+              production, but also for web design, motion interfaces, interactive storytelling, and presentation design.
             </p>
           </div>
         </details>
-
         <details>
-          <summary>Sungkyunkwan University: Film & Multimedia</summary>
+          <summary>Why Software Matters</summary>
           <div class="detail-body">
             <p>
-              Studying visual media, animation, digital design, video editing, storytelling, media history, and data-driven
-              approaches to art and content production.
+              Software study gives structure to creative ideas. It allows me to build web pages, organize databases, understand how
+              systems run, and create prototypes that can be tested. Instead of stopping at a visual concept, I can turn ideas into
+              working digital experiences.
             </p>
           </div>
         </details>
-
         <details>
-          <summary>Sungkyunkwan University: Software</summary>
+          <summary>How Both Fields Connect</summary>
           <div class="detail-body">
             <p>
-              Studying core software topics including systems programming, data structures, computer architecture,
-              databases, operating systems, programming languages, and web programming.
+              My portfolio direction is based on combining both fields. Media gives the work identity and meaning, while software
+              gives the work interaction and functionality. Together, they allow me to build projects that are expressive and usable.
             </p>
           </div>
         </details>
@@ -483,59 +696,81 @@
   <section id="courses">
     <div class="container">
       <h2 class="section-title">Completed Coursework</h2>
-      <p class="section-lead">The course list is separated into media-focused and software-focused study areas.</p>
+      <p class="section-lead">
+        The coursework section is expanded so visitors can understand what each study area contributes to my portfolio.
+      </p>
 
       <div class="details-grid">
-        <details>
+        <details open>
           <summary>Film & Multimedia Courses</summary>
           <div class="detail-body">
+            <p>
+              These courses shaped my ability to plan, produce, edit, and analyze visual media. They also connect directly to
+              interface design, content strategy, moving-image production, and creative technology projects.
+            </p>
             <ul>
-              <li>Introduction to Cinematography</li>
-              <li>Introduction to Animation</li>
-              <li>Character Animation</li>
-              <li>Digital Design</li>
-              <li>Interface and Interaction Design</li>
-              <li>Digital Video and Moving Image</li>
-              <li>Introduction to Video Editing</li>
-              <li>Video Editing Workshop</li>
-              <li>AI-Based Basic Game Workshop</li>
-              <li>Video Music Practice</li>
-              <li>Short-Form and MCN Content</li>
-              <li>Transmedia Storytelling</li>
-              <li>Film History</li>
-              <li>Art and Big Data</li>
+              <li><strong>Introduction to Cinematography</strong> — camera basics, framing, visual composition, and image planning.</li>
+              <li><strong>Introduction to Animation</strong> — timing, movement, animation principles, and visual continuity.</li>
+              <li><strong>Character Animation</strong> — character movement, expression, and animated performance.</li>
+              <li><strong>Digital Design</strong> — layout, digital visual systems, and design communication.</li>
+              <li><strong>Interface and Interaction Design</strong> — user flow, screen-based interaction, and interface structure.</li>
+              <li><strong>Digital Video and Moving Image</strong> — motion-based media, video language, and digital image expression.</li>
+              <li><strong>Introduction to Video Editing</strong> — editing fundamentals, continuity, pacing, and sequence construction.</li>
+              <li><strong>Video Editing Workshop</strong> — practical editing workflow, revision, and project-based production.</li>
+              <li><strong>AI-Based Basic Game Workshop</strong> — basic game production with AI-related creative experimentation.</li>
+              <li><strong>Video Music Practice</strong> — sound, music, rhythm, and audio-visual coordination.</li>
+              <li><strong>Short-Form and MCN Content</strong> — platform-based content, short-form strategy, and digital audience habits.</li>
+              <li><strong>Transmedia Storytelling</strong> — story expansion across multiple media platforms and formats.</li>
+              <li><strong>Film History</strong> — historical context for cinema, media forms, and visual culture.</li>
+              <li><strong>Art and Big Data</strong> — data-driven approaches to art, culture, and creative analysis.</li>
             </ul>
           </div>
         </details>
 
-        <details>
+        <details open>
           <summary>Software Courses</summary>
           <div class="detail-body">
+            <p>
+              These courses support my ability to build reliable digital systems. They are especially useful for web portfolios,
+              database-backed projects, interactive prototypes, and software tools for media production.
+            </p>
             <ul>
-              <li>Systems Programming</li>
-              <li>Introduction to Data Structures</li>
-              <li>Introduction to Computer Architecture</li>
-              <li>Logic Circuits</li>
-              <li>Introduction to Databases</li>
-              <li>Operating Systems</li>
-              <li>Programming Languages</li>
-              <li>Web Programming Practice</li>
+              <li><strong>Systems Programming</strong> — low-level programming concepts and system-oriented problem solving.</li>
+              <li><strong>Introduction to Data Structures</strong> — organizing data efficiently through lists, stacks, queues, trees, and graphs.</li>
+              <li><strong>Introduction to Computer Architecture</strong> — understanding how computers process instructions and manage memory.</li>
+              <li><strong>Logic Circuits</strong> — digital logic, hardware foundations, and computational reasoning.</li>
+              <li><strong>Introduction to Databases</strong> — relational data modeling, queries, and structured information management.</li>
+              <li><strong>Operating Systems</strong> — processes, memory, files, scheduling, and the structure of modern computing environments.</li>
+              <li><strong>Programming Languages</strong> — language design, paradigms, syntax, semantics, and comparative programming concepts.</li>
+              <li><strong>Web Programming Practice</strong> — front-end structure, web interaction, styling, and browser-based implementation.</li>
             </ul>
           </div>
         </details>
+      </div>
+
+      <div class="mini-grid">
+        <div class="mini-card"><h3>Media Strength</h3><p>Visual direction, editing, motion, storytelling, sound, interface design, and digital content planning.</p></div>
+        <div class="mini-card"><h3>Software Strength</h3><p>Programming foundations, structured data, system concepts, databases, and practical web development.</p></div>
+        <div class="mini-card"><h3>Combined Strength</h3><p>Turning creative ideas into interactive systems, digital tools, and portfolio-ready media experiences.</p></div>
       </div>
     </div>
   </section>
 
   <section id="skills">
     <div class="container">
-      <h2 class="section-title">Skills</h2>
-      <p class="section-lead">Click each card to confirm languages, programming skills, and production tools.</p>
+      <h2 class="section-title">Skills, Languages & Tools</h2>
+      <p class="section-lead">
+        Click each category to confirm available languages, programming skills, databases, creative tools, and production platforms.
+      </p>
 
       <div class="details-grid">
-        <details>
+        <details open>
           <summary>Human Languages</summary>
           <div class="detail-body">
+            <p>
+              I can communicate and organize work in both Korean and English, which is useful for research, documentation,
+              collaboration, software learning, and presenting portfolio content to a wider audience.
+            </p>
             <div class="tag-grid">
               <span class="tag">Korean</span>
               <span class="tag">English</span>
@@ -543,9 +778,13 @@
           </div>
         </details>
 
-        <details>
-          <summary>Programming & Markup Languages</summary>
+        <details open>
+          <summary>Programming, Markup & Database Languages</summary>
           <div class="detail-body">
+            <p>
+              These languages support both software coursework and portfolio development. They allow me to create web interfaces,
+              write scripts, study systems, work with databases, and understand different programming paradigms.
+            </p>
             <div class="tag-grid">
               <span class="tag">C</span>
               <span class="tag">JavaScript</span>
@@ -554,12 +793,24 @@
               <span class="tag">Python</span>
               <span class="tag">OCaml</span>
             </div>
+            <ul>
+              <li><strong>C</strong> — useful for system-level programming and understanding memory-oriented logic.</li>
+              <li><strong>JavaScript</strong> — used for browser interaction and dynamic web features.</li>
+              <li><strong>CSS</strong> — used to build responsive layouts, visual hierarchy, and consistent interface styling.</li>
+              <li><strong>PostgreSQL</strong> — used for relational data organization and database queries.</li>
+              <li><strong>Python</strong> — useful for scripting, automation, data work, and creative technology experiments.</li>
+              <li><strong>OCaml</strong> — useful for learning functional programming and programming language concepts.</li>
+            </ul>
           </div>
         </details>
 
-        <details>
-          <summary>Tools & Platforms</summary>
+        <details open>
+          <summary>Creative Software & Production Tools</summary>
           <div class="detail-body">
+            <p>
+              These tools support visual production, editing, motion graphics, illustration, game prototyping, database practice,
+              and Linux-based development workflows.
+            </p>
             <div class="tag-grid">
               <span class="tag">Adobe Photoshop</span>
               <span class="tag">Adobe Illustrator</span>
@@ -569,6 +820,15 @@
               <span class="tag">MongoDB</span>
               <span class="tag">Linux Ubuntu</span>
             </div>
+            <ul>
+              <li><strong>Adobe Photoshop</strong> — image editing, visual asset preparation, and digital composition.</li>
+              <li><strong>Adobe Illustrator</strong> — vector graphics, icons, layout elements, and clean visual design assets.</li>
+              <li><strong>Adobe Premiere Pro</strong> — video editing, sequencing, pacing, and content production workflow.</li>
+              <li><strong>Adobe After Effects</strong> — motion graphics, compositing, animated titles, and visual effects work.</li>
+              <li><strong>Unity</strong> — interactive prototypes, game-based experiences, and real-time media experiments.</li>
+              <li><strong>MongoDB</strong> — document-style database practice and flexible data organization.</li>
+              <li><strong>Linux Ubuntu</strong> — development environment, command-line workflow, and software practice.</li>
+            </ul>
           </div>
         </details>
       </div>
@@ -578,30 +838,58 @@
   <section id="projects">
     <div class="container">
       <h2 class="section-title">Project Areas</h2>
-      <p class="section-lead">Project cards can be expanded later with screenshots, links, GitHub repositories, or production notes.</p>
+      <p class="section-lead">
+        These project cards describe the kinds of work this portfolio can grow into. They can later be expanded with screenshots,
+        GitHub links, videos, design documents, production notes, or case studies.
+      </p>
 
       <div class="projects-grid">
         <div class="project-card">
+          <span class="label">Web</span>
           <h3>Interactive Portfolio Website</h3>
           <p>
-            A responsive HTML and CSS portfolio with clickable information cards, a strict black-white-navy color palette,
-            and a resume-oriented structure.
+            A responsive HTML and CSS website that presents education, coursework, technical skills, and creative tools through
+            clickable cards. The structure is designed to feel like an expanded resume while still functioning as a personal website.
           </p>
         </div>
-
         <div class="project-card">
+          <span class="label">Media</span>
           <h3>Media Production & Editing</h3>
           <p>
-            Coursework and practice related to cinematography, video editing, motion graphics, sound, animation,
-            and short-form content production.
+            A project area for video editing, cinematography practice, moving-image experiments, sound-based work, short-form content,
+            animation exercises, and motion graphics produced with Adobe tools.
           </p>
         </div>
-
         <div class="project-card">
+          <span class="label">Software</span>
           <h3>Software & Database Practice</h3>
           <p>
-            Technical study focused on programming, data structures, operating systems, database concepts,
-            web programming, and system-level thinking.
+            A technical area for projects involving programming exercises, web programming practice, PostgreSQL, MongoDB, Python scripts,
+            data organization, and small tools that support creative workflows.
+          </p>
+        </div>
+        <div class="project-card">
+          <span class="label">Interaction</span>
+          <h3>Interface and Interaction Studies</h3>
+          <p>
+            Interface-focused work that explores how users move through information. This area can include wireframes, interaction flows,
+            clickable prototypes, navigation systems, and screen-based design studies.
+          </p>
+        </div>
+        <div class="project-card">
+          <span class="label">AI</span>
+          <h3>AI-Assisted Creative Tools</h3>
+          <p>
+            Experimental work about how AI can support media production, visual ideation, game workshops, editing assistance, content
+            planning, and creative research while still requiring human direction and design judgment.
+          </p>
+        </div>
+        <div class="project-card">
+          <span class="label">Unity</span>
+          <h3>Game-Like Media Experiences</h3>
+          <p>
+            Unity-based prototypes that combine interaction, visual storytelling, basic game mechanics, and media presentation. This area
+            connects software logic with creative experience design.
           </p>
         </div>
       </div>
@@ -611,23 +899,52 @@
   <section id="contact">
     <div class="container">
       <h2 class="section-title">Contact</h2>
-      <p class="section-lead">Open to collaboration in media production, interactive design, web development, and creative software projects.</p>
+      <p class="section-lead">
+        Open to collaboration in media production, interactive design, web development, creative software projects, and student-level
+        experimental work that connects visual content with technical implementation.
+      </p>
 
-      <div class="content-box meta-list">
-        <div class="meta-item">
-          <strong>Email</strong>
-          <a href="mailto:junsuh1025@gmail.com">junsuh1025@gmail.com</a>
+      <div class="two-column">
+        <div class="content-box meta-list">
+          <div class="meta-item">
+            <strong>Email</strong>
+            <a href="mailto:junsuh1025@gmail.com">junsuh1025@gmail.com</a>
+          </div>
+          <div class="meta-item">
+            <strong>Academic Focus</strong>
+            <span>Film & Multimedia, Software, Interactive Media, Web Development</span>
+          </div>
+          <div class="meta-item">
+            <strong>Creative Focus</strong>
+            <span>Video editing, motion, interface design, short-form content, storytelling, visual systems</span>
+          </div>
         </div>
-        <div class="meta-item">
-          <strong>Focus</strong>
-          <span>Film & Multimedia, Software, Interactive Media, Web Development</span>
+
+        <div class="content-box meta-list">
+          <div class="meta-item">
+            <strong>Technical Focus</strong>
+            <span>HTML, CSS, JavaScript, Python, C, PostgreSQL, MongoDB, Linux Ubuntu</span>
+          </div>
+          <div class="meta-item">
+            <strong>Collaboration Interests</strong>
+            <span>Portfolio websites, digital archives, AI media tools, Unity prototypes, interactive exhibitions</span>
+          </div>
+          <div class="meta-item">
+            <strong>Website Note</strong>
+            <span>This portfolio is intentionally text-rich and expandable so that each section can later include real projects and links.</span>
+          </div>
         </div>
+      </div>
+
+      <div class="btn-row">
+        <a href="mailto:junsuh1025@gmail.com" class="btn">Send Email</a>
+        <a href="#home" class="btn secondary">Back to Top</a>
       </div>
     </div>
   </section>
 
   <footer>
-    © 2026 Junsuh Kang • Portfolio Website
+    © 2026 Junsuh Kang • Creative Technology Portfolio • Black / White / Navy Theme
   </footer>
 </body>
 </html>
